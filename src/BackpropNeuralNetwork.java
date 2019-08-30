@@ -24,5 +24,14 @@ public class BackpropNeuralNetwork {
 
     public void train(float[] input, float[] targetOutput, float learningRate, float momentum){
 
+        float[] calculatedOutput = run(input);
+        float[] error = new float[calculatedOutput.length];
+
+        for(int i=0; i<error.length; i++)
+            error[i] = targetOutput[i] - calculatedOutput[i];
+
+        for(int i=layers.length-1; i>=0; i--)
+            error = layers[i].train(error,learningRate,momentum);
+
     }
 }
