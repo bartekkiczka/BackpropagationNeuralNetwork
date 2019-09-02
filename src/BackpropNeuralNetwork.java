@@ -16,6 +16,7 @@ public class BackpropNeuralNetwork {
     public float[] run(float[] input){
 
         float[] activations = input;
+
         for(int i = 0; i < layers.length; i++)
             activations = layers[i].run(activations);
 

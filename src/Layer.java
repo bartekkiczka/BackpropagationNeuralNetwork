@@ -43,5 +43,23 @@ public class Layer {
 
     public float[] train(float[] error, float learningRate, float momentum){
 
+        int offset = 0;
+        float[] nextError = new float[input.length];
+
+        for(int i=0; i<output.length; i++){
+
+            float delta = error[i] * ActivationFunction.dSigmoid(output[i]);
+
+            for(int j=0; j<input.length; j++){
+                int weightIndex = offset+j;
+
+                nextError[j] = nextError[j] + weights[weightIndex] * delta;
+                float dw = input[j] * delta * learningRate;
+                weights[weightIndex] += dWeights[weightIndex] * momentum + dw;
+                dWeights[weightIndex] = dw;
+            }
+            offset += input.length;
+        }
+        return nextError;
     }
 }
