@@ -6,7 +6,7 @@ import java.io.IOException;
 public class CharacterReader {
 
     public void readImage() throws IOException{
-        BufferedImage image = ImageIO.read(new File("image.png"));
+        BufferedImage image = ImageIO.read(new File("number.png"));
         byte[][] pixels = new byte[image.getWidth()][];
         System.out.print("new float[] {");
 
